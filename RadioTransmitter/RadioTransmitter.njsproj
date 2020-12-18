@@ -11,8 +11,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>ee732c32-01a3-4744-a920-759078cdd0e8</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>
-    </StartupFile>
+    <StartupFile>shared\entityshared\Advertiser.ts</StartupFile>
     <StartWebBrowser>False</StartWebBrowser>
     <SearchPath>
     </SearchPath>
@@ -36,10 +35,41 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="data\" />
+    <Folder Include="data\class\" />
+    <Folder Include="data\interfaces\" />
     <Folder Include="logic\" />
+    <Folder Include="logic\class\" />
+    <Folder Include="logic\interfaces\" />
     <Folder Include="shared\" />
     <Folder Include="shared\entityshared\" />
     <Folder Include="shared\exceptions\" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="shared\entityshared\Advertiser.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="shared\entityshared\Campaign.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="shared\entityshared\ECampaign.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="shared\entityshared\Emission.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="shared\entityshared\OwnCampaign.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="shared\entityshared\Program.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="shared\exceptions\dataexception.ts" />
+    <TypeScriptCompile Include="shared\exceptions\customexception.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="shared\exceptions\logicexception.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
   <ProjectExtensions>
