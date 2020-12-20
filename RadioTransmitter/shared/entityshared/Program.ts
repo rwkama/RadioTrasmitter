@@ -27,6 +27,7 @@ export class Program {
     public set pricexseg(value: number) {
         this._pricexseg = value;
     }
+
     constructor(pname: string, pproducer: string, ptype: string, ppricexseg: number) {
        
         this.name = pname;

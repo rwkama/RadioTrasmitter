@@ -2,16 +2,20 @@
   "name": "radio-transmitter",
   "version": "0.0.0",
   "description": "RadioTransmitter",
-  "main": "app.js",
+  "main": "DAdvertiser.ts",
   "author": {
     "name": ""
   },
   "scripts": {
+    "start": "node DAdvertiser",
     "build": "tsc --build",
     "clean": "tsc --build --clean"
   },
   "devDependencies": {
     "@types/node": "^8.0.14",
     "typescript": "^3.2.2"
+  },
+  "dependencies": {
+    "mongodb": "^3.6.3"
   }
 }

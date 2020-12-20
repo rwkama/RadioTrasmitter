@@ -1,4 +1,6 @@
 import { Campaign } from "./Campaign";
+import { Emission } from "./Emission";
+import { Advertiser } from "./Advertiser";
 
 export class OwnCampaign extends Campaign
 {
@@ -11,10 +13,10 @@ export class OwnCampaign extends Campaign
     }
 
 
-    constructor( ctitle: string, cdatei: Date, cdatef: Date, cduration: number, cmentions: number, cadver: number, owncost: number)
+    constructor(ctitle: string, cdatei: Date, cdatef: Date, cduration: number, cmentions: number, cadver: Advertiser, owncost: number, ownlistem: Emission[])
     {
-       
-        super( ctitle, cdatei, cdatef, cduration, cmentions, cadver);
+
+        super(ctitle, cdatei, cdatef, cduration, cmentions, cadver, ownlistem);
         this.cost = owncost;
     }
 }

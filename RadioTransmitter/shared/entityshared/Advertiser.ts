@@ -1,41 +1,41 @@
 export class Advertiser
 {
-   private _rut: number;
-    public get rut(): number {
-        return this._rut;
+    private RutAn: number;
+    public get RutAnn(): number {
+        return this.RutAn;
     }
-    public set rut(value: number) {
-        this._rut = value;
+    public set RutAnn(value: number) {
+        this.RutAn = value;
     }
-    private _name: string;
-    public get name(): string {
-        return this._name;
+    private NomAn: string;
+    public get NomAnn(): string {
+        return this.NomAn;
     }
-    public set name(value: string) {
-        this._name = value;
+    public set NomAnn(value: string) {
+        this.NomAn = value;
     }
-    private _address: string;
-    public get address(): string {
-        return this._address;
+    private DirAn: string;
+    public get DirAnn(): string {
+        return this.DirAn;
     }
-    public set address(value: string) {
-        this._address = value;
+    public set DirAnn(value: string) {
+        this.DirAn = value;
     }
-    private _telefono: string;
-    public get telefono(): string {
-        return this._telefono;
+    private TelAn: string;
+    public get TelAnn(): string {
+        return this.TelAn;
     }
-    public set telefono(value: string) {
-        this._telefono = value;
+    public set TelAnn(value: string) {
+        this.TelAn = value;
     }
    
 
     constructor(pRut: number, pNombre: string, pDireccion: string, pTelefono: string)
 {
-    this.rut = pRut;
-    this.name = pNombre;
-    this.address = pDireccion;
-    this.telefono = pTelefono;
+    this.RutAnn = pRut;
+        this.NomAnn = pNombre;
+        this.DirAnn = pDireccion;
+        this.TelAnn = pTelefono;
 }
 
 }

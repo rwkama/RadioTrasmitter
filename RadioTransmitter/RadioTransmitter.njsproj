@@ -11,7 +11,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>ee732c32-01a3-4744-a920-759078cdd0e8</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>shared\entityshared\Advertiser.ts</StartupFile>
+    <StartupFile>data\class\DAdvertiser.ts</StartupFile>
     <StartWebBrowser>False</StartWebBrowser>
     <SearchPath>
     </SearchPath>
@@ -45,6 +45,18 @@
     <Folder Include="shared\exceptions\" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="data\class\Conection.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="data\class\DAdvertiser.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="data\FactoryData.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="data\interfaces\IDAdvertiser.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="shared\entityshared\Advertiser.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>

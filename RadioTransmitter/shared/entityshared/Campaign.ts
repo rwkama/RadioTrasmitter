@@ -1,3 +1,5 @@
+import { Advertiser } from "./Advertiser";
+import { Emission } from "./Emission";
 
 export abstract class Campaign
 {
@@ -30,13 +32,21 @@ export abstract class Campaign
     public set duration(value: number) {
         this._duration = value;
     }
-    private _adver: number;
-    public get adver(): number {
-        return this._adver;
+     private _advert: Advertiser;
+    public get advert(): Advertiser {
+        return this._advert;
     }
-    public set adver(value: number) {
-        this._adver = value;
+    public set advert(value: Advertiser) {
+        this._advert = value;
     }
+     private _listemision: Emission[];
+    public get listemision(): Emission[] {
+        return this._listemision;
+    }
+    public set listemision(value: Emission[]) {
+        this._listemision = value;
+    }
+  
     private _mentions: number;
     public get mentions(): number {
         return this._mentions;
@@ -45,7 +55,7 @@ export abstract class Campaign
         this._mentions = value;
     }
 
-    constructor(ctitle: string, cdatei: Date, cdatef: Date, cduration: number, cmentions: number, cadver: number)
+    constructor(ctitle: string, cdatei: Date, cdatef: Date, cduration: number, cmentions: number, cadver: Advertiser,clistem:Emission[])
     {
        
         this.title = ctitle;
@@ -53,7 +63,8 @@ export abstract class Campaign
         this.datef = cdatef;
         this.duration = cduration;
         this.mentions = cmentions;
-        this.adver = cadver;
+        this.advert = cadver;
+        this.listemision = clistem;
     }
     
 }

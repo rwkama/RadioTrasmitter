@@ -1,17 +1,14 @@
+
+import { Program } from "./Program";
+
 export class Emission {
-    private _titlecampaign: string;
-    public get titlecampaign(): string {
-        return this._titlecampaign;
+  
+    private _programem: Program;
+    public get programem(): Program {
+        return this._programem;
     }
-    public set titlecampaign(value: string) {
-        this._titlecampaign = value;
-    }
-    private _nameprogram: string;
-    public get nameprogram(): string {
-        return this._nameprogram;
-    }
-    public set nameprogram(value: string) {
-        this._nameprogram = value;
+    public set programem(value: Program) {
+        this._programem = value;
     }
     private _dateem: Date;
     public get dateem(): Date {
@@ -20,10 +17,10 @@ export class Emission {
     public set dateem(value: Date) {
         this._dateem = value;
     }
-    constructor(emtitle: string, enameprog: string,edateemi:Date) {
+    constructor( emprogram: Program,edateemi:Date) {
 
-        this.titlecampaign = emtitle;
-        this.nameprogram = enameprog;
+      
+        this.programem = emprogram;
         this.dateem = edateemi;
       
     }

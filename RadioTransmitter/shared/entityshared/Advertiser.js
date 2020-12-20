@@ -3,36 +3,35 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Advertiser = void 0;
 class Advertiser {
     constructor(pRut, pNombre, pDireccion, pTelefono) {
-        this.rut = pRut;
-        this.name = pNombre;
-        this.address = pDireccion;
-        this.telefono = pTelefono;
+        this.RutAnn = pRut;
+        this.NomAnn = pNombre;
+        this.DirAnn = pDireccion;
+        this.TelAnn = pTelefono;
     }
-    get rut() {
-        return this._rut;
+    get RutAnn() {
+        return this.RutAn;
     }
-    set rut(value) {
-        this._rut = value;
+    set RutAnn(value) {
+        this.RutAn = value;
     }
-    get name() {
-        return this._name;
+    get NomAnn() {
+        return this.NomAn;
     }
-    set name(value) {
-        this._name = value;
+    set NomAnn(value) {
+        this.NomAn = value;
     }
-    get address() {
-        return this._address;
+    get DirAnn() {
+        return this.DirAn;
     }
-    set address(value) {
-        this._address = value;
+    set DirAnn(value) {
+        this.DirAn = value;
     }
-    get telefono() {
-        return this._telefono;
+    get TelAnn() {
+        return this.TelAn;
     }
-    set telefono(value) {
-        this._telefono = value;
+    set TelAnn(value) {
+        this.TelAn = value;
     }
 }
 exports.Advertiser = Advertiser;
-console.log("asdd");
 //# sourceMappingURL=Advertiser.js.map

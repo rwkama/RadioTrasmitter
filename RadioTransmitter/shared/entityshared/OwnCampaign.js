@@ -3,8 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.OwnCampaign = void 0;
 const Campaign_1 = require("./Campaign");
 class OwnCampaign extends Campaign_1.Campaign {
-    constructor(ctitle, cdatei, cdatef, cduration, cmentions, cadver, owncost) {
-        super(ctitle, cdatei, cdatef, cduration, cmentions, cadver);
+    constructor(ctitle, cdatei, cdatef, cduration, cmentions, cadver, owncost, ownlistem) {
+        super(ctitle, cdatei, cdatef, cduration, cmentions, cadver, ownlistem);
         this.cost = owncost;
     }
     get cost() {
