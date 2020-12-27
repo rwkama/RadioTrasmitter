@@ -1,1 +1,1 @@
-{"version":3,"file":"FactoryData.js","sourceRoot":"","sources":["FactoryData.ts"],"names":[],"mappings":";;;AACA,qDAAkD;AAElD,MAAa,WAAW;IACb,MAAM,CAAC,cAAc;QACxB,OAAO,CAAC,yBAAW,CAAC,WAAW,EAAE,CAAC,CAAC;IACvC,CAAC;CACJ;AAJD,kCAIC"}
+{"version":3,"file":"FactoryData.js","sourceRoot":"","sources":["FactoryData.ts"],"names":[],"mappings":";;;AACA,qDAAkD;AAElD,+CAA4C;AAE5C,MAAa,WAAW;IACb,MAAM,CAAC,cAAc;QACxB,OAAO,CAAC,yBAAW,CAAC,WAAW,EAAE,CAAC,CAAC;IACvC,CAAC;IACM,MAAM,CAAC,WAAW;QACrB,OAAO,CAAC,mBAAQ,CAAC,WAAW,EAAE,CAAC,CAAC;IACpC,CAAC;CACJ;AAPD,kCAOC"}

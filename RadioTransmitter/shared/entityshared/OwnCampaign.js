@@ -13,6 +13,9 @@ class OwnCampaign extends Campaign_1.Campaign {
     set cost(value) {
         this._cost = value;
     }
+    CalculatePrice(precio) {
+        throw new Error("Method not implemented.");
+    }
 }
 exports.OwnCampaign = OwnCampaign;
 //# sourceMappingURL=OwnCampaign.js.map

@@ -4,6 +4,7 @@ import { Advertiser } from "./Advertiser";
 
 export class OwnCampaign extends Campaign
 {
+   
      private _cost: number;
     public get cost(): number {
         return this._cost;
@@ -18,5 +19,8 @@ export class OwnCampaign extends Campaign
 
         super(ctitle, cdatei, cdatef, cduration, cmentions, cadver, ownlistem);
         this.cost = owncost;
+    }
+    public CalculatePrice(precio: number) {
+        throw new Error("Method not implemented.");
     }
 }

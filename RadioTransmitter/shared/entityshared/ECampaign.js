@@ -13,6 +13,9 @@ class ECampaign extends Campaign_1.Campaign {
     set producer(value) {
         this._producer = value;
     }
+    CalculatePrice(precio) {
+        throw new Error("Method not implemented.");
+    }
 }
 exports.ECampaign = ECampaign;
 //# sourceMappingURL=ECampaign.js.map

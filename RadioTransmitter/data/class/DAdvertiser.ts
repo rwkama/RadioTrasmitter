@@ -37,6 +37,29 @@ export class DAdvertiser implements IDAdvertiser {
         }
 
     }
+    public async getAdvertisersByNameLetter(expression: string):Promise<Advertiser[]> {
+   
+    try {
+        var cn = await Conexion.uri().connect();
+        var query = { NomAn: { $regex: expression } }
+        const collection = cn.db("RadioTransmitter").collection("Advertiser");
+        const result = await collection.find(query).toArray();
+
+        let array = [];
+        for (var p of result) {
+            var obj = new Advertiser(p.RutAn, p.NomAn, p.DirAn, p.TelAn)
+            array.push(obj);
+        }
+
+        return array;
+        cn.close();
+
+    }
+    catch (e) {
+        throw new DataException("Advertisers could not be listed" + e.message);
+    }
+
+}
     public async getAdvertiser(rut:number): Promise<Advertiser> {
 
 
@@ -108,6 +131,7 @@ export class DAdvertiser implements IDAdvertiser {
     }
 
 
+
 }
 //TESTING
 //var dtadv = new Advertiser(555, "dfhdfhfdh", "sasafasfasf", "0867686776");
@@ -146,6 +170,17 @@ export class DAdvertiser implements IDAdvertiser {
   //      console.log(data)
 
 
-  //  });
+  //});
+//DAdvertiser.getInstance().getAdvertisersByNameLetter("S").then(data => {
+//        console.log(data)
+
+
+//    });
+ //DAdvertiser.getInstance().getAdvertisers().then(data => {
+ //       console.log(data)
+
+
+ //   });
+
 
 

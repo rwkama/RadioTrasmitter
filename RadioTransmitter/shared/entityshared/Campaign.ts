@@ -66,5 +66,6 @@ export abstract class Campaign
         this.advert = cadver;
         this.listemision = clistem;
     }
+    public abstract CalculatePrice(precio:number);
     
 }

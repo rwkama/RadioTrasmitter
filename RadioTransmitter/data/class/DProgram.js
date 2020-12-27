@@ -9,142 +9,141 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.DAdvertiser = void 0;
+exports.DProgram = void 0;
+const Program_1 = require("../../shared/entityshared/Program");
 const Conection_1 = require("./Conection");
-const Advertiser_1 = require("../../shared/entityshared/Advertiser");
 const dataexception_1 = require("../../shared/exceptions/dataexception");
-class DAdvertiser {
+class DProgram {
     constructor() { }
     static getInstance() {
-        if (!DAdvertiser.instancia) {
-            DAdvertiser.instancia = new DAdvertiser();
+        if (!DProgram.instancia) {
+            DProgram.instancia = new DProgram();
         }
-        return DAdvertiser.instancia;
+        return DProgram.instancia;
     }
-    getAdvertisers() {
+    getPrograms() {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 let cn = yield Conection_1.Conexion.uri().connect();
-                const collection = cn.db("RadioTransmitter").collection("Advertiser");
+                const collection = cn.db("RadioTransmitter").collection("Program");
                 const result = yield collection.find({}).toArray();
                 let array = [];
                 for (var p of result) {
-                    var obj = new Advertiser_1.Advertiser(p.RutAn, p.NomAn, p.DirAn, p.TelAn);
+                    var obj = new Program_1.Program(p._name, p._producer, p._type, p._pricexseg);
                     array.push(obj);
                 }
                 return array;
                 cn.close();
             }
             catch (e) {
-                throw new dataexception_1.DataException("Advertisers could not be listed" + e.message);
+                throw new dataexception_1.DataException("Program could not be listed" + e.message);
             }
         });
     }
-    getAdvertisersByNameLetter(expression) {
+    getProgramsByNameLetter(expression) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 var cn = yield Conection_1.Conexion.uri().connect();
-                var query = { NomAn: { $regex: expression } };
-                const collection = cn.db("RadioTransmitter").collection("Advertiser");
+                var query = { _name: { $regex: expression } };
+                const collection = cn.db("RadioTransmitter").collection("Program");
                 const result = yield collection.find(query).toArray();
                 let array = [];
                 for (var p of result) {
-                    var obj = new Advertiser_1.Advertiser(p.RutAn, p.NomAn, p.DirAn, p.TelAn);
+                    var obj = new Program_1.Program(p._name, p._producer, p._type, p._pricexseg);
                     array.push(obj);
                 }
                 return array;
                 cn.close();
             }
             catch (e) {
-                throw new dataexception_1.DataException("Advertisers could not be listed" + e.message);
+                throw new dataexception_1.DataException("Program could not be listed" + e.message);
             }
         });
     }
-    getAdvertiser(rut) {
+    getProgram(name) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 let cn = yield Conection_1.Conexion.uri().connect();
-                const collection = cn.db("RadioTransmitter").collection("Advertiser");
-                const p = yield collection.findOne({ RutAn: rut });
-                var obj = new Advertiser_1.Advertiser(p.RutAn, p.NomAn, p.DirAn, p.TelAn);
+                const collection = cn.db("RadioTransmitter").collection("Program");
+                const p = yield collection.findOne({ _name: name });
+                var obj = new Program_1.Program(p._name, p._producer, p._type, p._pricexseg);
                 return obj;
                 cn.close();
             }
             catch (e) {
-                throw new dataexception_1.DataException("Advertiser could not be searched" + e.message);
+                throw new dataexception_1.DataException("Program could not be searched" + e.message);
             }
         });
     }
-    addAdvertiser(dtadvertiser) {
+    addProgram(dtprogram) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 let cn = yield Conection_1.Conexion.uri().connect();
-                const coladvert = cn.db("RadioTransmitter").collection("Advertiser");
-                const result = yield coladvert.insertOne(dtadvertiser);
+                const coladvert = cn.db("RadioTransmitter").collection("Program");
+                const result = yield coladvert.insertOne(dtprogram);
                 cn.close();
             }
             catch (e) {
-                throw new dataexception_1.DataException("Advertiser could not be added" + e.message);
+                throw new dataexception_1.DataException("Program could not be added" + e.message);
             }
         });
     }
-    deleteAdvertiser(dtadvertiser) {
+    deleteProgram(dtprogram) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 let cn = yield Conection_1.Conexion.uri().connect();
-                const coladvert = cn.db("RadioTransmitter").collection("Advertiser");
-                const result = yield coladvert.deleteOne(dtadvertiser);
+                const coladvert = cn.db("RadioTransmitter").collection("Program");
+                const result = yield coladvert.deleteOne(dtprogram);
                 cn.close();
             }
             catch (e) {
-                throw new dataexception_1.DataException("Advertiser could not be deleted" + e.message);
+                throw new dataexception_1.DataException("Program could not be deleted" + e.message);
             }
         });
     }
-    updateAdvertiser(dtadvertiser) {
+    updateProgram(dtprogram) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 let cn = yield Conection_1.Conexion.uri().connect();
-                let query = { RutAn: dtadvertiser.RutAnn };
-                var newvalues = { $set: { NomAn: dtadvertiser.NomAnn, DirAn: dtadvertiser.DirAnn, TelAn: dtadvertiser.TelAnn } };
-                const coladvert = cn.db("RadioTransmitter").collection("Advertiser");
+                let query = { _name: dtprogram.name };
+                var newvalues = { $set: { _type: dtprogram.type, _pricexseg: dtprogram.pricexseg, _producer: dtprogram.producer } };
+                const coladvert = cn.db("RadioTransmitter").collection("Program");
                 const result = yield coladvert.updateOne(query, newvalues);
                 cn.close();
             }
             catch (e) {
-                throw new dataexception_1.DataException("Advertiser could not be updated" + e.message);
+                throw new dataexception_1.DataException("Program could not be updated" + e.message);
             }
         });
     }
 }
-exports.DAdvertiser = DAdvertiser;
-//TESTING
-//var dtadv = new Advertiser(555, "dfhdfhfdh", "sasafasfasf", "0867686776");
-//DAdvertiser.getInstance().addAdvertiser(dtadv).then(data => {
+exports.DProgram = DProgram;
+let dtprog = new Program_1.Program("Top 10", "PabloJackie", "Musical", 150);
+//DProgram.getInstance().addProgram(dtprog).then(data => {
 //    console.log(data)
-//    DAdvertiser.getInstance().getAdvertisers().then(data => {
+//    DProgram.getInstance().getPrograms().then(data => {
 //        console.log(data)
 //    });
 //});
-//DAdvertiser.getInstance().deleteAdvertiser(dtadv).then(data => {
+//DProgram.getInstance().deleteProgram(dtprog).then(data => {
 //    console.log(data)
-//    DAdvertiser.getInstance().getAdvertisers().then(data => {
+//    DProgram.getInstance().getPrograms().then(data => {
 //        console.log(data)
 //    });
 //});
-//DAdvertiser.getInstance().updateAdvertiser(dtadv).then(data => {
+//DProgram.getInstance().updateProgram(dtprog).then(data => {
 //    console.log(data)
-//    DAdvertiser.getInstance().getAdvertisers().then(data => {
+//    DProgram.getInstance().getPrograms().then(data => {
 //        console.log(data)
 //    });
 //});
-//DAdvertiser.getInstance().getAdvertiser(555).then(data => {
-//      console.log(data)
-//});
-//DAdvertiser.getInstance().getAdvertisersByNameLetter("S").then(data => {
+//DProgram.getInstance().getProgram("Viajar por Uruguay").then(data => {
+//        console.log(data)
+//  });
+//DProgram.getInstance().getProgramsByNameLetter("Ur").then(data => {
 //        console.log(data)
 //    });
-//DAdvertiser.getInstance().getAdvertisers().then(data => {
-//       console.log(data)
-//   });
-//# sourceMappingURL=DAdvertiser.js.map
+//DProgram.getInstance().getPrograms().then(data => {
+//        console.log(data)
+//    });
+//# sourceMappingURL=DProgram.js.map
