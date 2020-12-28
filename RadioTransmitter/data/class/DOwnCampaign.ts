@@ -131,15 +131,16 @@ export class DOwnCampaign implements IDOwnCampaign {
         }
 
     }
+   // ----------------------------------
     public async addOCEmission(dtec: OwnCampaign) {
         try {
 
-            let titlecam = { _title: dtec.title };
+            //let titlecam = {_title: dtec.title };
             let cn = await Conexion.uri().connect();
-            var newvalues = { $set: { _listemision: dtec.listemision } };
+            var query = {_title: dtec.title };
+            var newvalues = {$set: { _listemision: dtec.listemision } };
             const colcamp = await cn.db("RadioTransmitter").collection("OwnCampaign");
-
-            const result = await colcamp.updateOne(titlecam, newvalues);
+            const result = await colcamp.updateOne(query,newvalues);
 
 
             cn.close();
@@ -150,13 +151,11 @@ export class DOwnCampaign implements IDOwnCampaign {
         }
 
     }
-
-
 }
 //TESTING
-var datei = new Date("July 22, 2020");
-var datef = new Date("December 30, 2020");
-var dateem = new Date("December 27, 2020");
+//var datei = new Date("July 22, 2020");
+//var datef = new Date("December 30, 2020");
+//var dateem = new Date("December 27, 2020");
 //if (datei > datef) {
 //    console.log('La fecha final tiene que ser mayor a la fecha inicial');
 
@@ -165,23 +164,38 @@ var dateem = new Date("December 27, 2020");
 //{
 //    console.log('Bien');
 //}
-let dtprog = new Program("Top 10", "PabloJackie", "Musical", 150);
-var dtadv = new Advertiser(555, "sfasfasfsafas", "qweqwrqtqt", "0867686776");
-var em = new Emission(dtprog, dateem);
-var unalista = [];
-unalista.push(em);
-unalista.push(em);
-let dtec = new OwnCampaign("Celulares Android", datei, datef, 40, 6, dtadv, 500, unalista);
-dtec.listemision.push(em);
-DOwnCampaign.getInstance().addOCEmission(dtec).then(data => {
-    console.log(data)
-    DOwnCampaign.getInstance().getOwnCampaigns().then(data => {
-        console.log(data)
+//let dtprog = new Program("Viajar por Uruguay", "PabloJackie", "Musical", 150);
+//var dtadv = new Advertiser(555, "sfasfasfsafas", "qweqwrqtqt", "0867686776");
+//var em = new Emission(dtprog, dateem);
+//var unalista = [];
+////unalista.push(em);
+////unalista.push(em);
+//let dtec = new OwnCampaign("Celulares Android", datei, datef, 40, 6, dtadv, 500, unalista);
+//dtec.listemision.push(em);
+//DOwnCampaign.getInstance().addOCEmission(dtec).then(data => {
+//    console.log(data)
+//    DOwnCampaign.getInstance().getOwnCampaigns().then(data => {
+//        console.log(data)
 
 
-    });
-});
+//    });
+//});
+//DOwnCampaign.getInstance().getOCampaign("Celulares Android").then(campaign => {
+//    console.log(campaign)
+//    campaign.listemision.push(em);
+//    DOwnCampaign.getInstance().addOCEmission(campaign).then(emi =>
+//    {
+//        console.log(emi);
+//        DOwnCampaign.getInstance().getOwnCampaigns().then(data => {
+//        console.log(data)
 
+
+//    });
+
+//    })
+
+
+//  });
 
 //DOwnCampaign.getInstance().addOCampaign(dtec).then(data => {
 //    console.log(data)

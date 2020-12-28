@@ -152,14 +152,24 @@ let dtprog = new Program_1.Program("Top 10", "PabloJackie", "Musical", 150);
 var dtadv = new Advertiser_1.Advertiser(555, "sfasfasfsafas", "qweqwrqtqt", "0867686776");
 var em = new Emission_1.Emission(dtprog, dateem);
 var unalista = [];
-unalista.push(em);
-unalista.push(em);
+//unalista.push(em);
+//unalista.push(em);
 let dtec = new ECampaign_1.ECampaign("Cine Anime", datei, datef, 40, 4, dtadv, "Vitamina", unalista);
 dtec.listemision.push(em);
-DExternalCampaign.getInstance().addECEmission(dtec).then(data => {
-    console.log(data);
-    DExternalCampaign.getInstance().getECampaigns().then(data => {
-        console.log(data);
+//DExternalCampaign.getInstance().addECEmission(dtec).then(data => {
+//    console.log(data)
+//    DExternalCampaign.getInstance().getECampaigns().then(data => {
+//        console.log(data)
+//    });
+//});
+DExternalCampaign.getInstance().getECampaign("Cine Anime").then(campaign => {
+    console.log(campaign);
+    campaign.listemision.push(em);
+    DExternalCampaign.getInstance().addECEmission(campaign).then(emi => {
+        console.log(emi);
+        DExternalCampaign.getInstance().getECampaigns().then(data => {
+            console.log(data);
+        });
     });
 });
 //DExternalCampaign.getInstance().addECampaign(dtec).then(data => {

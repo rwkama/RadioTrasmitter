@@ -7,4 +7,5 @@ export interface IDOwnCampaign {
     addOCampaign(dtoc: OwnCampaign);
     deleteOCampaign(dtoc: OwnCampaign);
     updateOCampaign(dtoc: OwnCampaign);
+    addOCEmission(dtec: OwnCampaign)
 }

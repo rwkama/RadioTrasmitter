@@ -131,6 +131,7 @@ export class DExternalCampaign implements IDExternalCampaign {
         }
 
     }
+    //Emision 
     public async addECEmission(dtec: ECampaign) {
         try {
           
@@ -153,9 +154,9 @@ export class DExternalCampaign implements IDExternalCampaign {
 
 }
 //TESTING
-var datei = new Date("July 22, 2020");
-var datef = new Date("December 30, 2020");
-var dateem = new Date("December 27, 2020");
+//var datei = new Date("July 22, 2020");
+//var datef = new Date("December 30, 2020");
+//var dateem = new Date("December 27, 2020");
 //if (datei > datef) {
 //    console.log('La fecha final tiene que ser mayor a la fecha inicial');
 
@@ -164,23 +165,38 @@ var dateem = new Date("December 27, 2020");
 //{
 //    console.log('Bien');
 //}
-let dtprog = new Program("Top 10", "PabloJackie", "Musical", 150);
-var dtadv = new Advertiser(555, "sfasfasfsafas", "qweqwrqtqt", "0867686776");
-var em = new Emission(dtprog, dateem);
-var unalista=[];
-unalista.push(em);
-unalista.push(em);
-let dtec = new ECampaign("Cine Anime", datei, datef, 40, 4, dtadv, "Vitamina",unalista);
+//let dtprog = new Program("Top 10", "PabloJackie", "Musical", 150);
+//var dtadv = new Advertiser(555, "sfasfasfsafas", "qweqwrqtqt", "0867686776");
+//var em = new Emission(dtprog, dateem);
+//var unalista=[];
+////unalista.push(em);
+////unalista.push(em);
+//let dtec = new ECampaign("Cine Anime", datei, datef, 40, 4, dtadv, "Vitamina",unalista);
 
-dtec.listemision.push(em);
-DExternalCampaign.getInstance().addECEmission(dtec).then(data => {
-    console.log(data)
-    DExternalCampaign.getInstance().getECampaigns().then(data => {
-        console.log(data)
+//dtec.listemision.push(em);
+//DExternalCampaign.getInstance().addECEmission(dtec).then(data => {
+//    console.log(data)
+//    DExternalCampaign.getInstance().getECampaigns().then(data => {
+//        console.log(data)
 
 
-    });
-});
+//    });
+//});
+//DExternalCampaign.getInstance().getECampaign("Cine Anime").then(campaign => {
+//    console.log(campaign)
+//    campaign.listemision.push(em);
+//    DExternalCampaign.getInstance().addECEmission(campaign).then(emi => {
+//        console.log(emi);
+//        DExternalCampaign.getInstance().getECampaigns().then(data => {
+//            console.log(data)
+
+
+//        });
+
+//    })
+
+
+//});
 //DExternalCampaign.getInstance().addECampaign(dtec).then(data => {
 //    console.log(data)
 //    DExternalCampaign.getInstance().getECampaigns().then(data => {

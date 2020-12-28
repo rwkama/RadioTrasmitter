@@ -7,4 +7,6 @@ export interface IDExternalCampaign {
     addECampaign(dtec: ECampaign);
     deleteECampaign(dtec: ECampaign);
     updateECampaign(dtec: ECampaign);
+
+    addECEmission(dtec: ECampaign);
 }

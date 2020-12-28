@@ -120,14 +120,16 @@ class DOwnCampaign {
             }
         });
     }
+    // ----------------------------------
     addOCEmission(dtec) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                let titlecam = { _title: dtec.title };
+                //let titlecam = {_title: dtec.title };
                 let cn = yield Conection_1.Conexion.uri().connect();
+                var query = { _title: dtec.title };
                 var newvalues = { $set: { _listemision: dtec.listemision } };
                 const colcamp = yield cn.db("RadioTransmitter").collection("OwnCampaign");
-                const result = yield colcamp.updateOne(titlecam, newvalues);
+                const result = yield colcamp.updateOne(query, newvalues);
                 cn.close();
             }
             catch (e) {
@@ -148,18 +150,28 @@ var dateem = new Date("December 27, 2020");
 //{
 //    console.log('Bien');
 //}
-let dtprog = new Program_1.Program("Top 10", "PabloJackie", "Musical", 150);
+let dtprog = new Program_1.Program("Viajar por Uruguay", "PabloJackie", "Musical", 150);
 var dtadv = new Advertiser_1.Advertiser(555, "sfasfasfsafas", "qweqwrqtqt", "0867686776");
 var em = new Emission_1.Emission(dtprog, dateem);
 var unalista = [];
-unalista.push(em);
-unalista.push(em);
+//unalista.push(em);
+//unalista.push(em);
 let dtec = new OwnCampaign_1.OwnCampaign("Celulares Android", datei, datef, 40, 6, dtadv, 500, unalista);
 dtec.listemision.push(em);
-DOwnCampaign.getInstance().addOCEmission(dtec).then(data => {
-    console.log(data);
-    DOwnCampaign.getInstance().getOwnCampaigns().then(data => {
-        console.log(data);
+//DOwnCampaign.getInstance().addOCEmission(dtec).then(data => {
+//    console.log(data)
+//    DOwnCampaign.getInstance().getOwnCampaigns().then(data => {
+//        console.log(data)
+//    });
+//});
+DOwnCampaign.getInstance().getOCampaign("Celulares Android").then(campaign => {
+    console.log(campaign);
+    campaign.listemision.push(em);
+    DOwnCampaign.getInstance().addOCEmission(campaign).then(emi => {
+        console.log(emi);
+        DOwnCampaign.getInstance().getOwnCampaigns().then(data => {
+            console.log(data);
+        });
     });
 });
 //DOwnCampaign.getInstance().addOCampaign(dtec).then(data => {
