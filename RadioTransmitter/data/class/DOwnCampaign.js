@@ -13,9 +13,6 @@ exports.DOwnCampaign = void 0;
 const OwnCampaign_1 = require("../../shared/entityshared/OwnCampaign");
 const Conection_1 = require("./Conection");
 const dataexception_1 = require("../../shared/exceptions/dataexception");
-const Advertiser_1 = require("../../shared/entityshared/Advertiser");
-const Emission_1 = require("../../shared/entityshared/Emission");
-const Program_1 = require("../../shared/entityshared/Program");
 class DOwnCampaign {
     constructor() { }
     static getInstance() {
@@ -140,9 +137,9 @@ class DOwnCampaign {
 }
 exports.DOwnCampaign = DOwnCampaign;
 //TESTING
-var datei = new Date("July 22, 2020");
-var datef = new Date("December 30, 2020");
-var dateem = new Date("December 27, 2020");
+//var datei = new Date("July 22, 2020");
+//var datef = new Date("December 30, 2020");
+//var dateem = new Date("December 27, 2020");
 //if (datei > datef) {
 //    console.log('La fecha final tiene que ser mayor a la fecha inicial');
 //}
@@ -150,30 +147,31 @@ var dateem = new Date("December 27, 2020");
 //{
 //    console.log('Bien');
 //}
-let dtprog = new Program_1.Program("Viajar por Uruguay", "PabloJackie", "Musical", 150);
-var dtadv = new Advertiser_1.Advertiser(555, "sfasfasfsafas", "qweqwrqtqt", "0867686776");
-var em = new Emission_1.Emission(dtprog, dateem);
-var unalista = [];
-//unalista.push(em);
-//unalista.push(em);
-let dtec = new OwnCampaign_1.OwnCampaign("Celulares Android", datei, datef, 40, 6, dtadv, 500, unalista);
-dtec.listemision.push(em);
+//let dtprog = new Program("Viajar por Uruguay", "PabloJackie", "Musical", 150);
+//var dtadv = new Advertiser(555, "sfasfasfsafas", "qweqwrqtqt", "0867686776");
+//var em = new Emission(dtprog, dateem);
+//var unalista = [];
+////unalista.push(em);
+////unalista.push(em);
+//let dtec = new OwnCampaign("Celulares Android", datei, datef, 40, 6, dtadv, 500, unalista);
+//dtec.listemision.push(em);
 //DOwnCampaign.getInstance().addOCEmission(dtec).then(data => {
 //    console.log(data)
 //    DOwnCampaign.getInstance().getOwnCampaigns().then(data => {
 //        console.log(data)
 //    });
 //});
-DOwnCampaign.getInstance().getOCampaign("Celulares Android").then(campaign => {
-    console.log(campaign);
-    campaign.listemision.push(em);
-    DOwnCampaign.getInstance().addOCEmission(campaign).then(emi => {
-        console.log(emi);
-        DOwnCampaign.getInstance().getOwnCampaigns().then(data => {
-            console.log(data);
-        });
-    });
-});
+//DOwnCampaign.getInstance().getOCampaign("Celulares Android").then(campaign => {
+//    console.log(campaign)
+//    campaign.listemision.push(em);
+//    DOwnCampaign.getInstance().addOCEmission(campaign).then(emi =>
+//    {
+//        console.log(emi);
+//        DOwnCampaign.getInstance().getOwnCampaigns().then(data => {
+//        console.log(data)
+//    });
+//    })
+//  });
 //DOwnCampaign.getInstance().addOCampaign(dtec).then(data => {
 //    console.log(data)
 //    DOwnCampaign.getInstance().getOwnCampaigns().then(data => {

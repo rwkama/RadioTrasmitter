@@ -13,9 +13,6 @@ exports.DExternalCampaign = void 0;
 const ECampaign_1 = require("../../shared/entityshared/ECampaign");
 const Conection_1 = require("./Conection");
 const dataexception_1 = require("../../shared/exceptions/dataexception");
-const Advertiser_1 = require("../../shared/entityshared/Advertiser");
-const Emission_1 = require("../../shared/entityshared/Emission");
-const Program_1 = require("../../shared/entityshared/Program");
 class DExternalCampaign {
     constructor() { }
     static getInstance() {
@@ -120,6 +117,7 @@ class DExternalCampaign {
             }
         });
     }
+    //Emision 
     addECEmission(dtec) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
@@ -138,9 +136,9 @@ class DExternalCampaign {
 }
 exports.DExternalCampaign = DExternalCampaign;
 //TESTING
-var datei = new Date("July 22, 2020");
-var datef = new Date("December 30, 2020");
-var dateem = new Date("December 27, 2020");
+//var datei = new Date("July 22, 2020");
+//var datef = new Date("December 30, 2020");
+//var dateem = new Date("December 27, 2020");
 //if (datei > datef) {
 //    console.log('La fecha final tiene que ser mayor a la fecha inicial');
 //}
@@ -148,30 +146,30 @@ var dateem = new Date("December 27, 2020");
 //{
 //    console.log('Bien');
 //}
-let dtprog = new Program_1.Program("Top 10", "PabloJackie", "Musical", 150);
-var dtadv = new Advertiser_1.Advertiser(555, "sfasfasfsafas", "qweqwrqtqt", "0867686776");
-var em = new Emission_1.Emission(dtprog, dateem);
-var unalista = [];
-//unalista.push(em);
-//unalista.push(em);
-let dtec = new ECampaign_1.ECampaign("Cine Anime", datei, datef, 40, 4, dtadv, "Vitamina", unalista);
-dtec.listemision.push(em);
+//let dtprog = new Program("Top 10", "PabloJackie", "Musical", 150);
+//var dtadv = new Advertiser(555, "sfasfasfsafas", "qweqwrqtqt", "0867686776");
+//var em = new Emission(dtprog, dateem);
+//var unalista=[];
+////unalista.push(em);
+////unalista.push(em);
+//let dtec = new ECampaign("Cine Anime", datei, datef, 40, 4, dtadv, "Vitamina",unalista);
+//dtec.listemision.push(em);
 //DExternalCampaign.getInstance().addECEmission(dtec).then(data => {
 //    console.log(data)
 //    DExternalCampaign.getInstance().getECampaigns().then(data => {
 //        console.log(data)
 //    });
 //});
-DExternalCampaign.getInstance().getECampaign("Cine Anime").then(campaign => {
-    console.log(campaign);
-    campaign.listemision.push(em);
-    DExternalCampaign.getInstance().addECEmission(campaign).then(emi => {
-        console.log(emi);
-        DExternalCampaign.getInstance().getECampaigns().then(data => {
-            console.log(data);
-        });
-    });
-});
+//DExternalCampaign.getInstance().getECampaign("Cine Anime").then(campaign => {
+//    console.log(campaign)
+//    campaign.listemision.push(em);
+//    DExternalCampaign.getInstance().addECEmission(campaign).then(emi => {
+//        console.log(emi);
+//        DExternalCampaign.getInstance().getECampaigns().then(data => {
+//            console.log(data)
+//        });
+//    })
+//});
 //DExternalCampaign.getInstance().addECampaign(dtec).then(data => {
 //    console.log(data)
 //    DExternalCampaign.getInstance().getECampaigns().then(data => {

@@ -71,7 +71,7 @@ class DAdvertiser {
                 cn.close();
             }
             catch (e) {
-                throw new dataexception_1.DataException("Advertiser could not be searched" + e.message);
+                throw new dataexception_1.DataException("Advertiser could not be searched");
             }
         });
     }

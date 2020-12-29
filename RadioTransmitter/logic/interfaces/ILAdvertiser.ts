@@ -1,5 +1,7 @@
+import { Advertiser } from "../../shared/entityshared/Advertiser";
+
 export interface ILAdvertiser {
-    //getAdvertisers(): Promise<Advertiser[]>;
+    getAdvertisers(): Promise<Advertiser[]>;
     //getAdvertiser(rut: number): Promise<Advertiser>;
     //getAdvertisersByNameLetter(expression: string): Promise<Advertiser[]>;
     //addAdvertiser(dtadvertiser: Advertiser);

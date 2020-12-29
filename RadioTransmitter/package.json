@@ -7,7 +7,7 @@
     "name": ""
   },
   "scripts": {
-    "start": "node DAdvertiser",
+    "start": "node ./logic/class/LAdvertiser.js",
     "build": "tsc --build",
     "clean": "tsc --build --clean"
   },

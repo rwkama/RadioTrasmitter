@@ -131,7 +131,7 @@ export class DProgram implements IDProgram {
     }
     //TESTING
 }
-let dtprog = new Program("Top 10", "PabloJackie","Musical",150);
+//let dtprog = new Program("Top 10", "PabloJackie","Musical",150);
 
 //DProgram.getInstance().addProgram(dtprog).then(data => {
 //    console.log(data)

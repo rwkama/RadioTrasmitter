@@ -75,7 +75,7 @@ export class DAdvertiser implements IDAdvertiser {
 
         }
         catch (e) {
-            throw new DataException("Advertiser could not be searched" + e.message);
+            throw new DataException("Advertiser could not be searched");
         }
 
     }

@@ -118,7 +118,7 @@ class DProgram {
     }
 }
 exports.DProgram = DProgram;
-let dtprog = new Program_1.Program("Top 10", "PabloJackie", "Musical", 150);
+//let dtprog = new Program("Top 10", "PabloJackie","Musical",150);
 //DProgram.getInstance().addProgram(dtprog).then(data => {
 //    console.log(data)
 //    DProgram.getInstance().getPrograms().then(data => {
