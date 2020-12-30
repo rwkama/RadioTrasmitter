@@ -75,7 +75,7 @@ export class DAdvertiser implements IDAdvertiser {
 
         }
         catch (e) {
-            throw new DataException("Advertiser could not be searched");
+            throw new DataException("Advertiser could not be searched (It is possible that the Advertiser is not in the system)");
         }
 
     }
@@ -97,10 +97,10 @@ export class DAdvertiser implements IDAdvertiser {
     }
     public async deleteAdvertiser(dtadvertiser: Advertiser) {
         try {
-
+            var myquery = { RutAn: dtadvertiser.RutAnn };
             let cn = await Conexion.uri().connect();
             const coladvert = cn.db("RadioTransmitter").collection("Advertiser");
-            const result = await coladvert.deleteOne(dtadvertiser);
+            const result = await coladvert.deleteOne(myquery);
 
             
             cn.close();

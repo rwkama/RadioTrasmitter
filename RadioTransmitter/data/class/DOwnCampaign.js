@@ -71,7 +71,7 @@ class DOwnCampaign {
                 cn.close();
             }
             catch (e) {
-                throw new dataexception_1.DataException("Own Campaign could not be searched" + e.message);
+                throw new dataexception_1.DataException("Own Campaign could not be searched(It is possible that the OwnCampaign is not in the system)" + e.message);
             }
         });
     }

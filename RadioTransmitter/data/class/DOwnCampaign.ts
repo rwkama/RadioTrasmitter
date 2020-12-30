@@ -76,7 +76,7 @@ export class DOwnCampaign implements IDOwnCampaign {
 
         }
         catch (e) {
-            throw new DataException("Own Campaign could not be searched" + e.message);
+            throw new DataException("Own Campaign could not be searched(It is possible that the OwnCampaign is not in the system)" + e.message);
         }
 
     }

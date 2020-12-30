@@ -76,7 +76,7 @@ export class DExternalCampaign implements IDExternalCampaign {
 
         }
         catch (e) {
-            throw new DataException("External Campaign could not be searched" + e.message);
+            throw new DataException("External Campaign could not be searched (It is possible that the ECampaign is not in the system)" + e.message);
         }
 
     }

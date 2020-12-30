@@ -1,6 +1,6 @@
 export class CustomException extends Error {
 
-    constructor(mensaje: string) {
+    constructor(mensaje) {
         super(mensaje);
     }
 

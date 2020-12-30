@@ -11,6 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LAdvertiser = void 0;
 const logicexception_1 = require("../../shared/exceptions/logicexception");
+const Advertiser_1 = require("../../shared/entityshared/Advertiser");
 const FactoryData_1 = require("../../data/FactoryData");
 class LAdvertiser {
     constructor() { }
@@ -26,39 +27,59 @@ class LAdvertiser {
             throw new logicexception_1.LogicException("The rut must be greater than or equal to 1");
         }
     }
+    validateAdvertiser(validateadvertiser) {
+        this.validateRut(validateadvertiser.RutAnn);
+        if (validateadvertiser == null) {
+            throw new logicexception_1.LogicException("The Advertiser is empty ");
+        }
+        if (validateadvertiser.NomAnn.trim() === "") {
+            throw new logicexception_1.LogicException("The name cannot be empty");
+        }
+        if (validateadvertiser.DirAnn.trim() === "") {
+            throw new logicexception_1.LogicException("The address cannot be empty");
+        }
+        if (validateadvertiser.TelAnn.trim() === "") {
+            throw new logicexception_1.LogicException("The phone number cannot be empty");
+        }
+        if (!validateadvertiser.TelAnn.match(/^\d+$/)) {
+            throw new logicexception_1.LogicException("The phone number can only contains number");
+        }
+    }
     //---------
     getAdvertisers() {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                var listad = yield FactoryData_1.FactoryData.getDAdvertiser().getAdvertisers();
-                return listad;
-            }
-            catch (e) {
-                throw new logicexception_1.LogicException("Advertisers could not be listed" + e.message);
-            }
-        });
-    }
-    getAdvertiserByNameLetter(expression) {
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                if (expression.length == 0) {
-                    var listad = yield FactoryData_1.FactoryData.getDAdvertiser().getAdvertisers();
-                    return listad;
-                }
-                var listexp = yield FactoryData_1.FactoryData.getDAdvertiser().getAdvertisersByNameLetter(expression);
-                return listexp;
-            }
-            catch (e) {
-                throw new logicexception_1.LogicException("Advertisers could not be listed" + e.message);
-            }
+            var listad = yield FactoryData_1.FactoryData.getDAdvertiser().getAdvertisers();
+            return listad;
         });
     }
     getAdvertiser(rut) {
         return __awaiter(this, void 0, void 0, function* () {
             this.validateRut(rut);
-            var search = yield FactoryData_1.FactoryData.getDAdvertiser().getAdvertiser(rut);
-            return search;
+            var searchadvertiser = yield FactoryData_1.FactoryData.getDAdvertiser().getAdvertiser(rut);
+            return searchadvertiser;
         });
+    }
+    getAdvertiserByNameLetter(expression) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (expression.length == 0) {
+                var lista = yield FactoryData_1.FactoryData.getDAdvertiser().getAdvertisers();
+                return lista;
+            }
+            var listexp = yield FactoryData_1.FactoryData.getDAdvertiser().getAdvertisersByNameLetter(expression);
+            return listexp;
+        });
+    }
+    addAdvertiser(dtadvertiser) {
+        this.validateAdvertiser(dtadvertiser);
+        FactoryData_1.FactoryData.getDAdvertiser().addAdvertiser(dtadvertiser);
+    }
+    deleteAdvertiser(dtadvertiser) {
+        this.validateRut(dtadvertiser.RutAnn);
+        FactoryData_1.FactoryData.getDAdvertiser().deleteAdvertiser(dtadvertiser);
+    }
+    updateAdvertiser(dtadvertiser) {
+        this.validateAdvertiser(dtadvertiser);
+        FactoryData_1.FactoryData.getDAdvertiser().updateAdvertiser(dtadvertiser);
     }
 }
 exports.LAdvertiser = LAdvertiser;
@@ -69,7 +90,23 @@ exports.LAdvertiser = LAdvertiser;
 //LAdvertiser.getInstance().getAdvertiserByNameLetter("").then(data => {
 //        console.log(data)
 //    });
-LAdvertiser.getInstance().getAdvertiser(0).then(data => {
+//LAdvertiser.getInstance().getAdvertiser(555).then(data => {
+//    console.log(data)
+//    });
+let datatypeAdvertiser = new Advertiser_1.Advertiser(89878, "NewAdvertiser", "Venezuela 154 block 7", "545556546");
+//LAdvertiser.getInstance().addAdvertiser(datatypeAdvertiser);
+//console.log("Advertiser added");
+//LAdvertiser.getInstance().getAdvertisers().then(data => {
+//        console.log(data)
+//    });
+//LAdvertiser.getInstance().deleteAdvertiser(datatypeAdvertiser);
+//console.log("Advertiser deleted");
+//LAdvertiser.getInstance().getAdvertisers().then(data => {
+//        console.log(data)
+//    });
+LAdvertiser.getInstance().updateAdvertiser(datatypeAdvertiser);
+console.log("Advertiser updated");
+LAdvertiser.getInstance().getAdvertisers().then(data => {
     console.log(data);
 });
 //# sourceMappingURL=LAdvertiser.js.map

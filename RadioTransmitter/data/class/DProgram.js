@@ -71,7 +71,7 @@ class DProgram {
                 cn.close();
             }
             catch (e) {
-                throw new dataexception_1.DataException("Program could not be searched" + e.message);
+                throw new dataexception_1.DataException("Program could not be searched (It is possible that the Program is not in the system)" + e.message);
             }
         });
     }
@@ -91,9 +91,10 @@ class DProgram {
     deleteProgram(dtprogram) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
+                var myquery = { _name: dtprogram.name };
                 let cn = yield Conection_1.Conexion.uri().connect();
                 const coladvert = cn.db("RadioTransmitter").collection("Program");
-                const result = yield coladvert.deleteOne(dtprogram);
+                const result = yield coladvert.deleteOne(myquery);
                 cn.close();
             }
             catch (e) {

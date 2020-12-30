@@ -75,7 +75,7 @@ export class DProgram implements IDProgram {
 
         }
         catch (e) {
-            throw new DataException("Program could not be searched" + e.message);
+            throw new DataException("Program could not be searched (It is possible that the Program is not in the system)" + e.message);
         }
 
     }
@@ -97,10 +97,10 @@ export class DProgram implements IDProgram {
     }
     public async deleteProgram(dtprogram: Program) {
         try {
-
+            var myquery = { _name: dtprogram.name};
             let cn = await Conexion.uri().connect();
             const coladvert = cn.db("RadioTransmitter").collection("Program");
-            const result = await coladvert.deleteOne(dtprogram);
+            const result = await coladvert.deleteOne(myquery);
 
 
             cn.close();

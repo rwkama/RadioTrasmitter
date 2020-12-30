@@ -11,7 +11,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>ee732c32-01a3-4744-a920-759078cdd0e8</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>logic\class\LAdvertiser.ts</StartupFile>
+    <StartupFile>logic\class\LProgram.ts</StartupFile>
     <StartWebBrowser>False</StartWebBrowser>
     <SearchPath>
     </SearchPath>
@@ -75,11 +75,13 @@
     <TypeScriptCompile Include="data\interfaces\IDProgram.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="logic\class\LProgram.ts" />
     <TypeScriptCompile Include="logic\class\LAdvertiser.ts" />
     <TypeScriptCompile Include="logic\FactoryLogic.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="logic\interfaces\ILAdvertiser.ts" />
+    <TypeScriptCompile Include="logic\interfaces\ILProgram.ts" />
     <TypeScriptCompile Include="shared\entityshared\Advertiser.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>

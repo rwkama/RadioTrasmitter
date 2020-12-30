@@ -71,7 +71,7 @@ class DAdvertiser {
                 cn.close();
             }
             catch (e) {
-                throw new dataexception_1.DataException("Advertiser could not be searched");
+                throw new dataexception_1.DataException("Advertiser could not be searched (It is possible that the Advertiser is not in the system)");
             }
         });
     }
@@ -91,9 +91,10 @@ class DAdvertiser {
     deleteAdvertiser(dtadvertiser) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
+                var myquery = { RutAn: dtadvertiser.RutAnn };
                 let cn = yield Conection_1.Conexion.uri().connect();
                 const coladvert = cn.db("RadioTransmitter").collection("Advertiser");
-                const result = yield coladvert.deleteOne(dtadvertiser);
+                const result = yield coladvert.deleteOne(myquery);
                 cn.close();
             }
             catch (e) {
