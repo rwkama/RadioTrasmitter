@@ -18,7 +18,9 @@ export class Program {
         return this._type;
     }
     public set type(value: string) {
-        this._type = value;
+       
+         this._type = value; 
+       
     }
     private _pricexseg: number;
     public get pricexseg(): number {

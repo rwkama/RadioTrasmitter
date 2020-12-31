@@ -75,12 +75,18 @@
     <TypeScriptCompile Include="data\interfaces\IDProgram.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="logic\class\LCampaign.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="logic\class\LProgram.ts" />
     <TypeScriptCompile Include="logic\class\LAdvertiser.ts" />
     <TypeScriptCompile Include="logic\FactoryLogic.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="logic\interfaces\ILAdvertiser.ts" />
+    <TypeScriptCompile Include="logic\interfaces\ILCampaign.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="logic\interfaces\ILProgram.ts" />
     <TypeScriptCompile Include="shared\entityshared\Advertiser.ts">
       <SubType>Code</SubType>

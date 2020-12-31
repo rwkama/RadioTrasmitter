@@ -92,7 +92,7 @@ export class LAdvertiser implements ILAdvertiser {
 //    console.log(data)
 
 //    });
-let datatypeAdvertiser = new Advertiser(89878, "NewAdvertiser", "Venezuela 154 block 7", "545556546");
+//let datatypeAdvertiser = new Advertiser(89878, "NewAdvertiser", "Venezuela 154 block 7", "545556546");
 //LAdvertiser.getInstance().addAdvertiser(datatypeAdvertiser);
 //console.log("Advertiser added");
 //LAdvertiser.getInstance().getAdvertisers().then(data => {
@@ -104,8 +104,8 @@ let datatypeAdvertiser = new Advertiser(89878, "NewAdvertiser", "Venezuela 154 b
 //LAdvertiser.getInstance().getAdvertisers().then(data => {
 //        console.log(data)
 //    });
-LAdvertiser.getInstance().updateAdvertiser(datatypeAdvertiser);
-console.log("Advertiser updated");
-LAdvertiser.getInstance().getAdvertisers().then(data => {
-        console.log(data)
-    });
+//LAdvertiser.getInstance().updateAdvertiser(datatypeAdvertiser);
+//console.log("Advertiser updated");
+//LAdvertiser.getInstance().getAdvertisers().then(data => {
+//        console.log(data)
+//    });

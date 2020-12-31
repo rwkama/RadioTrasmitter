@@ -36,12 +36,7 @@ export class LProgram implements ILProgram {
         if (validateprogram.type.trim() === "") {
             throw new LogicException("The type cannot be empty");
         }
-        if (validateprogram.type !== ("Musical"||"Varieties"||"Journalistic")) {
-            throw new LogicException("The program type must be Musical, Journalistic, or Varieties only");
-        }
- 
-       
-        if (validateprogram.pricexseg<0) {
+        if (validateprogram.pricexseg<1) {
             throw new LogicException("The price per second must be greater than 0");
         }
     }
@@ -68,7 +63,12 @@ export class LProgram implements ILProgram {
     }
     public addProgram(dtprogram: Program): void {
         this.validateProgram(dtprogram);
-        FactoryData.getDProgram().addProgram(dtprogram);
+        if (dtprogram.type == "Musical" || dtprogram.type == "Varieties" || dtprogram.type == "Journalistic") {
+            FactoryData.getDProgram().addProgram(dtprogram);
+        }
+        else { throw new LogicException("The program type must be Musical, Journalistic, or Varieties only");}
+       
+   
     }
     public deleteProgram(dtprogram: Program): void {
         this.validateName(dtprogram.name);
@@ -76,7 +76,10 @@ export class LProgram implements ILProgram {
     }
     public updateProgram(dtprogram: Program): void {
         this.validateProgram(dtprogram);
-        FactoryData.getDProgram().updateProgram(dtprogram);
+        if (dtprogram.type == "Musical" || dtprogram.type == "Varieties" || dtprogram.type == "Journalistic") {
+            FactoryData.getDProgram().updateProgram(dtprogram);
+        }
+        else { throw new LogicException("The program type must be Musical, Journalistic, or Varieties only"); }
     }
 }
     
@@ -91,19 +94,19 @@ export class LProgram implements ILProgram {
 //    console.log(data)
 
 //    });
-let datatypeProgram = new Program("NewProgram", "NewProducer", "Varieties", 256);
+let datatypeProgram = new Program("NewProgram", "NewProducer", "Journalistic", 256);
 //LProgram.getInstance().addProgram(datatypeProgram);
 //console.log("Program added");
 //LProgram.getInstance().getPrograms().then(data => {
 //        console.log(data)
 //    });
 //LProgram.getInstance().deleteProgram(datatypeProgram);
-//console.log("Program deleted");
+//console.log("program deleted");
 //LProgram.getInstance().getPrograms().then(data => {
 //        console.log(data)
 //    });
-LProgram.getInstance().updateProgram(datatypeProgram);
-console.log("Program updated");
-LProgram.getInstance().getPrograms().then(data => {
-        console.log(data)
-    });
+//LProgram.getInstance().updateProgram(datatypeProgram);
+//console.log("Program updated");
+//LProgram.getInstance().getPrograms().then(data => {
+//        console.log(data)
+//    });
