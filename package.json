@@ -1,19 +1,19 @@
 {
   "name": "radiotrasmitter",
   "version": "0.0.2",
-  "description": "Radiotrasmitter",
+  "description": "This package contains a backend of what would be the logic of a radio transmitter software, the architecture used is made in 3 layers",
   "main": "app.js",
+  "license": "MIT",
   "author": {
     "name": "Carlos Rodriguez"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/rwkama/crudproducmssql.git"
+    "url": "https://github.com/rwkama1/RadioTrasmitter"
   },
   "keywords": [
     "backend",
-    "js",
-    "javascript"
+    "typescript"
   ],
   "scripts": {
     "start": "node app"
