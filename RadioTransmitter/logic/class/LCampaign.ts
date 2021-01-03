@@ -264,9 +264,7 @@ export class LCampaign implements ILCampaign{
 //LCampaign.getInstance().getCampaign("Celular Android").then(data => {
 //    console.log(data)
 //});
-LCampaign.getInstance().getCampaign("df").then(data => {
-    console.log(data.CalculatePrice())
-});
+
 //let datei = new Date("july 22, 2020");
 //let datef = new Date("december 30, 2020");
 //let dateem = new Date("December 28, 2020");
@@ -305,17 +303,6 @@ LCampaign.getInstance().getCampaign("df").then(data => {
 //            console.log(data)
 //        });
 //    });;
-
-
-
-//LAdvertiser.getInstance().deleteAdvertiser(datatypeAdvertiser);
-//console.log("Advertiser deleted");
-
-//LAdvertiser.getInstance().getAdvertisers().then(data => {
-//        console.log(data)
-//    });
-//LAdvertiser.getInstance().updateAdvertiser(datatypeAdvertiser);
-//console.log("Advertiser updated");
-//LAdvertiser.getInstance().getAdvertisers().then(data => {
-//        console.log(data)
-//    });
+//LCampaign.getInstance().getCampaign("df").then(data => {
+//    console.log(data.CalculatePrice())
+//});

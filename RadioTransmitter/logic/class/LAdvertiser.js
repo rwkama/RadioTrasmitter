@@ -11,6 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LAdvertiser = void 0;
 const logicexception_1 = require("../../shared/exceptions/logicexception");
+const Advertiser_1 = require("../../shared/entityshared/Advertiser");
 const FactoryData_1 = require("../../data/FactoryData");
 class LAdvertiser {
     constructor() { }
@@ -26,23 +27,65 @@ class LAdvertiser {
             throw new logicexception_1.LogicException("The rut must be greater than or equal to 1");
         }
     }
-    validateAdvertiser(validateadvertiser) {
-        this.validateRut(validateadvertiser.RutAnn);
-        if (validateadvertiser == null) {
-            throw new logicexception_1.LogicException("The Advertiser is empty ");
-        }
-        if (validateadvertiser.NomAnn.trim() === "") {
-            throw new logicexception_1.LogicException("The name cannot be empty");
-        }
-        if (validateadvertiser.DirAnn.trim() === "") {
-            throw new logicexception_1.LogicException("The address cannot be empty");
-        }
-        if (validateadvertiser.TelAnn.trim() === "") {
-            throw new logicexception_1.LogicException("The phone number cannot be empty");
-        }
-        if (!validateadvertiser.TelAnn.match(/^\d+$/)) {
-            throw new logicexception_1.LogicException("The phone number can only contains number");
-        }
+    validateAddAdvertiser(validateadvertiser) {
+        return __awaiter(this, void 0, void 0, function* () {
+            this.validateRut(validateadvertiser.RutAnn);
+            let objsearchadv = yield this.getAdvertiser(validateadvertiser.RutAnn);
+            if (validateadvertiser == null) {
+                throw new logicexception_1.LogicException("The Advertiser is empty ");
+            }
+            if (objsearchadv != null) {
+                throw new logicexception_1.LogicException("That Advertiser already exists in the system");
+            }
+            if (validateadvertiser.NomAnn.trim() === "") {
+                throw new logicexception_1.LogicException("The name cannot be empty");
+            }
+            if (validateadvertiser.DirAnn.trim() === "") {
+                throw new logicexception_1.LogicException("The address cannot be empty");
+            }
+            if (validateadvertiser.TelAnn.trim() === "") {
+                throw new logicexception_1.LogicException("The phone number cannot be empty");
+            }
+            if (!validateadvertiser.TelAnn.match(/^\d+$/)) {
+                throw new logicexception_1.LogicException("The phone number can only contains number");
+            }
+        });
+    }
+    validateUpdateAdvertiser(validateadvertiser) {
+        return __awaiter(this, void 0, void 0, function* () {
+            this.validateRut(validateadvertiser.RutAnn);
+            let objsearchadv = yield this.getAdvertiser(validateadvertiser.RutAnn);
+            if (validateadvertiser == null) {
+                throw new logicexception_1.LogicException("The Advertiser is empty ");
+            }
+            if (objsearchadv == null) {
+                throw new logicexception_1.LogicException("That Advertiser does not exist in the system ");
+            }
+            if (validateadvertiser.NomAnn.trim() === "") {
+                throw new logicexception_1.LogicException("The name cannot be empty");
+            }
+            if (validateadvertiser.DirAnn.trim() === "") {
+                throw new logicexception_1.LogicException("The address cannot be empty");
+            }
+            if (validateadvertiser.TelAnn.trim() === "") {
+                throw new logicexception_1.LogicException("The phone number cannot be empty");
+            }
+            if (!validateadvertiser.TelAnn.match(/^\d+$/)) {
+                throw new logicexception_1.LogicException("The phone number can only contains number");
+            }
+        });
+    }
+    validateDeleteAdvertiser(validateadvertiser) {
+        return __awaiter(this, void 0, void 0, function* () {
+            this.validateRut(validateadvertiser.RutAnn);
+            let objsearchadv = yield this.getAdvertiser(validateadvertiser.RutAnn);
+            if (validateadvertiser == null) {
+                throw new logicexception_1.LogicException("The Advertiser is empty ");
+            }
+            if (objsearchadv == null) {
+                throw new logicexception_1.LogicException("That Advertiser does not exist in the system ");
+            }
+        });
     }
     //---------
     getAdvertisers() {
@@ -69,20 +112,26 @@ class LAdvertiser {
         });
     }
     addAdvertiser(dtadvertiser) {
-        this.validateAdvertiser(dtadvertiser);
-        FactoryData_1.FactoryData.getDAdvertiser().addAdvertiser(dtadvertiser);
+        return __awaiter(this, void 0, void 0, function* () {
+            yield this.validateAddAdvertiser(dtadvertiser);
+            FactoryData_1.FactoryData.getDAdvertiser().addAdvertiser(dtadvertiser);
+        });
     }
     deleteAdvertiser(dtadvertiser) {
-        this.validateRut(dtadvertiser.RutAnn);
-        FactoryData_1.FactoryData.getDAdvertiser().deleteAdvertiser(dtadvertiser);
+        return __awaiter(this, void 0, void 0, function* () {
+            yield this.validateDeleteAdvertiser(dtadvertiser);
+            FactoryData_1.FactoryData.getDAdvertiser().deleteAdvertiser(dtadvertiser);
+        });
     }
     updateAdvertiser(dtadvertiser) {
-        this.validateAdvertiser(dtadvertiser);
-        FactoryData_1.FactoryData.getDAdvertiser().updateAdvertiser(dtadvertiser);
+        return __awaiter(this, void 0, void 0, function* () {
+            yield this.validateUpdateAdvertiser(dtadvertiser);
+            FactoryData_1.FactoryData.getDAdvertiser().updateAdvertiser(dtadvertiser);
+        });
     }
 }
 exports.LAdvertiser = LAdvertiser;
-//Testing
+//TESTING
 //LAdvertiser.getInstance().getAdvertisers().then(data => {
 //        console.log(data)
 //    });
@@ -92,20 +141,14 @@ exports.LAdvertiser = LAdvertiser;
 //LAdvertiser.getInstance().getAdvertiser(555).then(data => {
 //    console.log(data)
 //    });
-//let datatypeAdvertiser = new Advertiser(89878, "NewAdvertiser", "Venezuela 154 block 7", "545556546");
-//LAdvertiser.getInstance().addAdvertiser(datatypeAdvertiser);
-//console.log("Advertiser added");
-//LAdvertiser.getInstance().getAdvertisers().then(data => {
+let datatypeAdvertiser = new Advertiser_1.Advertiser(898788, "NewAdvertiser", "Vasd", "545556546");
+//LAdvertiser.getInstance().addAdvertiser(datatypeAdvertiser).then(data => {
 //        console.log(data)
 //    });
-//LAdvertiser.getInstance().deleteAdvertiser(datatypeAdvertiser);
-//console.log("Advertiser deleted");
-//LAdvertiser.getInstance().getAdvertisers().then(data => {
-//        console.log(data)
-//    });
-//LAdvertiser.getInstance().updateAdvertiser(datatypeAdvertiser);
-//console.log("Advertiser updated");
-//LAdvertiser.getInstance().getAdvertisers().then(data => {
+LAdvertiser.getInstance().deleteAdvertiser(datatypeAdvertiser).then(data => {
+    console.log(data);
+});
+//LAdvertiser.getInstance().updateAdvertiser(datatypeAdvertiser).then(data => {
 //        console.log(data)
 //    });
 //# sourceMappingURL=LAdvertiser.js.map

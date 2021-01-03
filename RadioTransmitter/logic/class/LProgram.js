@@ -27,20 +27,59 @@ class LProgram {
             throw new logicexception_1.LogicException("The name cannot be empty");
         }
     }
-    validateProgram(validateprogram) {
-        this.validateName(validateprogram.name);
-        if (validateprogram == null) {
-            throw new logicexception_1.LogicException("The Program is empty ");
-        }
-        if (validateprogram.producer.trim() === "") {
-            throw new logicexception_1.LogicException("The producer cannot be empty");
-        }
-        if (validateprogram.type.trim() === "") {
-            throw new logicexception_1.LogicException("The type cannot be empty");
-        }
-        if (validateprogram.pricexseg < 1) {
-            throw new logicexception_1.LogicException("The price per second must be greater than 0");
-        }
+    validateAddProgram(validateprogram) {
+        return __awaiter(this, void 0, void 0, function* () {
+            this.validateName(validateprogram.name);
+            let objsearchpro = yield this.getProgram(validateprogram.name);
+            if (validateprogram == null) {
+                throw new logicexception_1.LogicException("The Program is empty ");
+            }
+            if (objsearchpro != null) {
+                throw new logicexception_1.LogicException("That Program already exists in the system ");
+            }
+            if (validateprogram.producer.trim() === "") {
+                throw new logicexception_1.LogicException("The producer cannot be empty");
+            }
+            if (validateprogram.type.trim() === "") {
+                throw new logicexception_1.LogicException("The type cannot be empty");
+            }
+            if (validateprogram.pricexseg < 1) {
+                throw new logicexception_1.LogicException("The price per second must be greater than 0");
+            }
+        });
+    }
+    validateDeleteProgram(validateprogram) {
+        return __awaiter(this, void 0, void 0, function* () {
+            this.validateName(validateprogram.name);
+            let objsearchpro = yield this.getProgram(validateprogram.name);
+            if (validateprogram == null) {
+                throw new logicexception_1.LogicException("The Program is empty ");
+            }
+            if (objsearchpro == null) {
+                throw new logicexception_1.LogicException("That Program does not exist in the system ");
+            }
+        });
+    }
+    validateUpdateProgram(validateprogram) {
+        return __awaiter(this, void 0, void 0, function* () {
+            this.validateName(validateprogram.name);
+            let objsearchpro = yield this.getProgram(validateprogram.name);
+            if (validateprogram == null) {
+                throw new logicexception_1.LogicException("The Program is empty ");
+            }
+            if (objsearchpro == null) {
+                throw new logicexception_1.LogicException("That Program does not exist in the system ");
+            }
+            if (validateprogram.producer.trim() === "") {
+                throw new logicexception_1.LogicException("The producer cannot be empty");
+            }
+            if (validateprogram.type.trim() === "") {
+                throw new logicexception_1.LogicException("The type cannot be empty");
+            }
+            if (validateprogram.pricexseg < 1) {
+                throw new logicexception_1.LogicException("The price per second must be greater than 0");
+            }
+        });
     }
     //---------
     getPrograms() {
@@ -67,53 +106,47 @@ class LProgram {
         });
     }
     addProgram(dtprogram) {
-        this.validateProgram(dtprogram);
-        if (dtprogram.type == "Musical" || dtprogram.type == "Varieties" || dtprogram.type == "Journalistic") {
-            FactoryData_1.FactoryData.getDProgram().addProgram(dtprogram);
-        }
-        else {
-            throw new logicexception_1.LogicException("The program type must be Musical, Journalistic, or Varieties only");
-        }
+        return __awaiter(this, void 0, void 0, function* () {
+            yield this.validateAddProgram(dtprogram);
+            if (dtprogram.type == "Musical" || dtprogram.type == "Varieties" || dtprogram.type == "Journalistic") {
+                FactoryData_1.FactoryData.getDProgram().addProgram(dtprogram);
+            }
+            else {
+                throw new logicexception_1.LogicException("The program type must be Musical, Journalistic, or Varieties only");
+            }
+        });
     }
     deleteProgram(dtprogram) {
-        this.validateName(dtprogram.name);
-        FactoryData_1.FactoryData.getDProgram().deleteProgram(dtprogram);
+        return __awaiter(this, void 0, void 0, function* () {
+            yield this.validateDeleteProgram(dtprogram);
+            FactoryData_1.FactoryData.getDProgram().deleteProgram(dtprogram);
+        });
     }
     updateProgram(dtprogram) {
-        this.validateProgram(dtprogram);
-        if (dtprogram.type == "Musical" || dtprogram.type == "Varieties" || dtprogram.type == "Journalistic") {
-            FactoryData_1.FactoryData.getDProgram().updateProgram(dtprogram);
-        }
-        else {
-            throw new logicexception_1.LogicException("The program type must be Musical, Journalistic, or Varieties only");
-        }
+        return __awaiter(this, void 0, void 0, function* () {
+            yield this.validateUpdateProgram(dtprogram);
+            if (dtprogram.type == "Musical" || dtprogram.type == "Varieties" || dtprogram.type == "Journalistic") {
+                FactoryData_1.FactoryData.getDProgram().updateProgram(dtprogram);
+            }
+            else {
+                throw new logicexception_1.LogicException("The program type must be Musical, Journalistic, or Varieties only");
+            }
+        });
     }
 }
 exports.LProgram = LProgram;
 //Testing
-//LAdvertiser.getInstance().getAdvertisers().then(data => {
+let datatypeProgram = new Program_1.Program("NewPrograms", "NewProducer", "Journalistic", 400);
+//LProgram.getInstance().addProgram(datatypeProgram)
+//.then(data => {
 //        console.log(data)
 //    });
-//LAdvertiser.getInstance().getAdvertiserByNameLetter("").then(data => {
+//LProgram.getInstance().deleteProgram(datatypeProgram)
+//.then(data => {
 //        console.log(data)
 //    });
-//LAdvertiser.getInstance().getAdvertiser(555).then(data => {
-//    console.log(data)
-//    });
-let datatypeProgram = new Program_1.Program("NewProgram", "NewProducer", "Journalistic", 256);
-//LProgram.getInstance().addProgram(datatypeProgram);
-//console.log("Program added");
-//LProgram.getInstance().getPrograms().then(data => {
-//        console.log(data)
-//    });
-//LProgram.getInstance().deleteProgram(datatypeProgram);
-//console.log("program deleted");
-//LProgram.getInstance().getPrograms().then(data => {
-//        console.log(data)
-//    });
-//LProgram.getInstance().updateProgram(datatypeProgram);
-//console.log("Program updated");
-//LProgram.getInstance().getPrograms().then(data => {
+//LProgram.getInstance().updateProgram(datatypeProgram)
+//.then(data => {
 //        console.log(data)
 //    });
 //# sourceMappingURL=LProgram.js.map

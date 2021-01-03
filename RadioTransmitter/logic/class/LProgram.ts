@@ -21,13 +21,17 @@ export class LProgram implements ILProgram {
             throw new LogicException("The name cannot be empty");
         }
     }
-    private validateProgram(validateprogram: Program)
+    private async validateAddProgram(validateprogram: Program)
     {
     
         this.validateName(validateprogram.name);
+        let objsearchpro = await this.getProgram(validateprogram.name);
         if (validateprogram == null)
         {
             throw new LogicException("The Program is empty ");
+        }
+        if (objsearchpro != null) {
+            throw new LogicException("That Program already exists in the system ");
         }
         if (validateprogram.producer.trim() === "")
         {
@@ -40,7 +44,39 @@ export class LProgram implements ILProgram {
             throw new LogicException("The price per second must be greater than 0");
         }
     }
+    private async validateDeleteProgram(validateprogram: Program) {
 
+        this.validateName(validateprogram.name);
+        let objsearchpro = await this.getProgram(validateprogram.name);
+        if (validateprogram == null) {
+            throw new LogicException("The Program is empty ");
+        }
+        if (objsearchpro == null) {
+            throw new LogicException("That Program does not exist in the system ");
+        }
+      
+    }
+    private async validateUpdateProgram(validateprogram: Program) {
+
+        this.validateName(validateprogram.name);
+        let objsearchpro = await this.getProgram(validateprogram.name);
+        if (validateprogram == null) {
+            throw new LogicException("The Program is empty ");
+        }
+        if (objsearchpro == null) {
+            throw new LogicException("That Program does not exist in the system ");
+        }
+
+        if (validateprogram.producer.trim() === "") {
+            throw new LogicException("The producer cannot be empty");
+        }
+        if (validateprogram.type.trim() === "") {
+            throw new LogicException("The type cannot be empty");
+        }
+        if (validateprogram.pricexseg < 1) {
+            throw new LogicException("The price per second must be greater than 0");
+        }
+    }
     //---------
     public async getPrograms(): Promise<Program[]> {
         var listaprogram = await FactoryData.getDProgram().getPrograms();
@@ -61,8 +97,8 @@ export class LProgram implements ILProgram {
             var listexp = await FactoryData.getDProgram().getProgramsByNameLetter(expression);
             return listexp;
     }
-    public addProgram(dtprogram: Program): void {
-        this.validateProgram(dtprogram);
+    public async addProgram(dtprogram: Program) {
+        await this.validateAddProgram(dtprogram);
         if (dtprogram.type == "Musical" || dtprogram.type == "Varieties" || dtprogram.type == "Journalistic") {
             FactoryData.getDProgram().addProgram(dtprogram);
         }
@@ -70,12 +106,12 @@ export class LProgram implements ILProgram {
        
    
     }
-    public deleteProgram(dtprogram: Program): void {
-        this.validateName(dtprogram.name);
+    public async deleteProgram(dtprogram: Program) {
+        await this.validateDeleteProgram(dtprogram);
         FactoryData.getDProgram().deleteProgram(dtprogram);
     }
-    public updateProgram(dtprogram: Program): void {
-        this.validateProgram(dtprogram);
+    public async updateProgram(dtprogram: Program) {
+        await this.validateUpdateProgram(dtprogram);
         if (dtprogram.type == "Musical" || dtprogram.type == "Varieties" || dtprogram.type == "Journalistic") {
             FactoryData.getDProgram().updateProgram(dtprogram);
         }
@@ -84,29 +120,17 @@ export class LProgram implements ILProgram {
 }
     
 //Testing
-//LAdvertiser.getInstance().getAdvertisers().then(data => {
-//        console.log(data)
-//    });
-//LAdvertiser.getInstance().getAdvertiserByNameLetter("").then(data => {
-//        console.log(data)
-//    });
-//LAdvertiser.getInstance().getAdvertiser(555).then(data => {
-//    console.log(data)
 
-//    });
-let datatypeProgram = new Program("NewProgram", "NewProducer", "Journalistic", 256);
-//LProgram.getInstance().addProgram(datatypeProgram);
-//console.log("Program added");
-//LProgram.getInstance().getPrograms().then(data => {
+let datatypeProgram = new Program("NewPrograms", "NewProducer", "Journalistic", 400);
+//LProgram.getInstance().addProgram(datatypeProgram)
+//.then(data => {
 //        console.log(data)
 //    });
-//LProgram.getInstance().deleteProgram(datatypeProgram);
-//console.log("program deleted");
-//LProgram.getInstance().getPrograms().then(data => {
+//LProgram.getInstance().deleteProgram(datatypeProgram)
+//.then(data => {
 //        console.log(data)
 //    });
-//LProgram.getInstance().updateProgram(datatypeProgram);
-//console.log("Program updated");
-//LProgram.getInstance().getPrograms().then(data => {
+//LProgram.getInstance().updateProgram(datatypeProgram)
+//.then(data => {
 //        console.log(data)
 //    });

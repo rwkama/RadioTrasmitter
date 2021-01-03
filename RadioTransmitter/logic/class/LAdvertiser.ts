@@ -23,13 +23,17 @@ export class LAdvertiser implements ILAdvertiser {
             throw new LogicException("The rut must be greater than or equal to 1");
         }
     }
-    private  validateAdvertiser(validateadvertiser: Advertiser)
+    private  async validateAddAdvertiser(validateadvertiser: Advertiser)
     {
     
         this.validateRut(validateadvertiser.RutAnn);
+        let objsearchadv = await this.getAdvertiser(validateadvertiser.RutAnn);
         if (validateadvertiser == null)
         {
             throw new LogicException("The Advertiser is empty ");
+        }
+        if (objsearchadv != null) {
+            throw new LogicException("That Advertiser already exists in the system");
         }
         if (validateadvertiser.NomAnn.trim() === "")
         {
@@ -46,7 +50,43 @@ export class LAdvertiser implements ILAdvertiser {
         }
       
     }
+    private async validateUpdateAdvertiser(validateadvertiser: Advertiser) {
 
+        this.validateRut(validateadvertiser.RutAnn);
+        let objsearchadv = await this.getAdvertiser(validateadvertiser.RutAnn);
+        if (validateadvertiser == null) {
+            throw new LogicException("The Advertiser is empty ");
+        }
+        if (objsearchadv == null) {
+            throw new LogicException("That Advertiser does not exist in the system ");
+        }
+        if (validateadvertiser.NomAnn.trim() === "") {
+            throw new LogicException("The name cannot be empty");
+        }
+        if (validateadvertiser.DirAnn.trim() === "") {
+            throw new LogicException("The address cannot be empty");
+        }
+        if (validateadvertiser.TelAnn.trim() === "") {
+            throw new LogicException("The phone number cannot be empty");
+        }
+        if (!validateadvertiser.TelAnn.match(/^\d+$/)) {
+            throw new LogicException("The phone number can only contains number");
+        }
+
+    }
+    private async validateDeleteAdvertiser(validateadvertiser: Advertiser) {
+
+        this.validateRut(validateadvertiser.RutAnn);
+        let objsearchadv = await this.getAdvertiser(validateadvertiser.RutAnn);
+        if (validateadvertiser == null) {
+            throw new LogicException("The Advertiser is empty ");
+        }
+        if (objsearchadv == null) {
+            throw new LogicException("That Advertiser does not exist in the system ");
+        }
+      
+
+    }
     //---------
     public async getAdvertisers(): Promise<Advertiser[]> {
             var listad = await FactoryData.getDAdvertiser().getAdvertisers();
@@ -67,21 +107,22 @@ export class LAdvertiser implements ILAdvertiser {
             var listexp = await FactoryData.getDAdvertiser().getAdvertisersByNameLetter(expression);
             return listexp;
     }
-    public addAdvertiser(dtadvertiser: Advertiser): void {
-        this.validateAdvertiser(dtadvertiser);
+    public async addAdvertiser(dtadvertiser: Advertiser) {
+        await this.validateAddAdvertiser(dtadvertiser);
         FactoryData.getDAdvertiser().addAdvertiser(dtadvertiser);
     }
-    public deleteAdvertiser(dtadvertiser: Advertiser): void {
-        this.validateRut(dtadvertiser.RutAnn);
+    public async deleteAdvertiser(dtadvertiser: Advertiser) {
+        await this.validateDeleteAdvertiser(dtadvertiser);
         FactoryData.getDAdvertiser().deleteAdvertiser(dtadvertiser);
     }
-    public updateAdvertiser(dtadvertiser: Advertiser): void {
-        this.validateAdvertiser(dtadvertiser);
+    public async updateAdvertiser(dtadvertiser: Advertiser) {
+        await this.validateUpdateAdvertiser(dtadvertiser);
         FactoryData.getDAdvertiser().updateAdvertiser(dtadvertiser);
     }
 }
     
-//Testing
+//TESTING
+
 //LAdvertiser.getInstance().getAdvertisers().then(data => {
 //        console.log(data)
 //    });
@@ -92,20 +133,14 @@ export class LAdvertiser implements ILAdvertiser {
 //    console.log(data)
 
 //    });
-//let datatypeAdvertiser = new Advertiser(89878, "NewAdvertiser", "Venezuela 154 block 7", "545556546");
-//LAdvertiser.getInstance().addAdvertiser(datatypeAdvertiser);
-//console.log("Advertiser added");
-//LAdvertiser.getInstance().getAdvertisers().then(data => {
-//        console.log(data)
-//    });
-//LAdvertiser.getInstance().deleteAdvertiser(datatypeAdvertiser);
-//console.log("Advertiser deleted");
+//let datatypeAdvertiser = new Advertiser(898788, "NewAdvertiser", "Vasd", "545556546");
 
-//LAdvertiser.getInstance().getAdvertisers().then(data => {
+//LAdvertiser.getInstance().addAdvertiser(datatypeAdvertiser).then(data => {
 //        console.log(data)
 //    });
-//LAdvertiser.getInstance().updateAdvertiser(datatypeAdvertiser);
-//console.log("Advertiser updated");
-//LAdvertiser.getInstance().getAdvertisers().then(data => {
+//LAdvertiser.getInstance().deleteAdvertiser(datatypeAdvertiser).then(data => {
+//        console.log(data)
+//    });
+//LAdvertiser.getInstance().updateAdvertiser(datatypeAdvertiser).then(data => {
 //        console.log(data)
 //    });
