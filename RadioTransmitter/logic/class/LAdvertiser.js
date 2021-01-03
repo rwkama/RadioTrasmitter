@@ -11,7 +11,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LAdvertiser = void 0;
 const logicexception_1 = require("../../shared/exceptions/logicexception");
-const Advertiser_1 = require("../../shared/entityshared/Advertiser");
 const FactoryData_1 = require("../../data/FactoryData");
 class LAdvertiser {
     constructor() { }
@@ -141,13 +140,13 @@ exports.LAdvertiser = LAdvertiser;
 //LAdvertiser.getInstance().getAdvertiser(555).then(data => {
 //    console.log(data)
 //    });
-let datatypeAdvertiser = new Advertiser_1.Advertiser(898788, "NewAdvertiser", "Vasd", "545556546");
+//let datatypeAdvertiser = new Advertiser(898788, "NewAdvertiser", "Vasd", "545556546");
 //LAdvertiser.getInstance().addAdvertiser(datatypeAdvertiser).then(data => {
 //        console.log(data)
 //    });
-LAdvertiser.getInstance().deleteAdvertiser(datatypeAdvertiser).then(data => {
-    console.log(data);
-});
+//LAdvertiser.getInstance().deleteAdvertiser(datatypeAdvertiser).then(data => {
+//        console.log(data)
+//    });
 //LAdvertiser.getInstance().updateAdvertiser(datatypeAdvertiser).then(data => {
 //        console.log(data)
 //    });
