@@ -62,11 +62,15 @@ class DExternalCampaign {
     }
     getECampaign(title) {
         return __awaiter(this, void 0, void 0, function* () {
+            let obj = null;
             try {
                 let cn = yield Conection_1.Conexion.uri().connect();
-                const collection = cn.db("RadioTransmitter").collection("ExternalCampaign");
-                const p = yield collection.findOne({ _title: title });
-                var obj = new ECampaign_1.ECampaign(p._title, p._datei, p._datef, p._duration, p._mentions, p._advert, p._producer, p._listemision);
+                let collection = cn.db("RadioTransmitter").collection("ExternalCampaign");
+                let p = yield collection.findOne({ _title: title });
+                if (p == null) {
+                    return null;
+                }
+                obj = new ECampaign_1.ECampaign(p._title, p._datei, p._datef, p._duration, p._mentions, p._advert, p._producer, p._listemision);
                 return obj;
                 cn.close();
             }
@@ -78,6 +82,7 @@ class DExternalCampaign {
     addECampaign(dtec) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
+                dtec.listemision = [];
                 let cn = yield Conection_1.Conexion.uri().connect();
                 const coladvert = cn.db("RadioTransmitter").collection("ExternalCampaign");
                 const result = yield coladvert.insertOne(dtec);
@@ -149,6 +154,7 @@ exports.DExternalCampaign = DExternalCampaign;
 //let dtprog = new Program("Top 10", "PabloJackie", "Musical", 150);
 //var dtadv = new Advertiser(555, "sfasfasfsafas", "qweqwrqtqt", "0867686776");
 //var em = new Emission(dtprog, dateem);
+let dateem = new Date("December 27, 2020");
 //var unalista=[];
 ////unalista.push(em);
 ////unalista.push(em);

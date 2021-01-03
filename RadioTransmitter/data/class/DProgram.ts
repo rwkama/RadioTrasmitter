@@ -68,7 +68,7 @@ export class DProgram implements IDProgram {
             const collection = cn.db("RadioTransmitter").collection("Program");
             const p = await collection.findOne({ _name: name });
 
-
+            if (p == null) { return null; }
             var obj = new Program(p._name, p._producer, p._type, p._pricexseg)
             return obj;
             cn.close();

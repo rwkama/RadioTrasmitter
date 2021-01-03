@@ -62,11 +62,15 @@ class DAdvertiser {
     }
     getAdvertiser(rut) {
         return __awaiter(this, void 0, void 0, function* () {
+            let obj = null;
             try {
                 let cn = yield Conection_1.Conexion.uri().connect();
                 const collection = cn.db("RadioTransmitter").collection("Advertiser");
                 const p = yield collection.findOne({ RutAn: rut });
-                var obj = new Advertiser_1.Advertiser(p.RutAn, p.NomAn, p.DirAn, p.TelAn);
+                if (p == null) {
+                    return null;
+                }
+                obj = new Advertiser_1.Advertiser(p.RutAn, p.NomAn, p.DirAn, p.TelAn);
                 return obj;
                 cn.close();
             }

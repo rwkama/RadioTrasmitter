@@ -11,7 +11,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>ee732c32-01a3-4744-a920-759078cdd0e8</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>logic\class\LProgram.ts</StartupFile>
+    <StartupFile>logic\class\LCampaign.ts</StartupFile>
     <StartWebBrowser>False</StartWebBrowser>
     <SearchPath>
     </SearchPath>

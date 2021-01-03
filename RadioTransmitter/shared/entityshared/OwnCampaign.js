@@ -13,8 +13,20 @@ class OwnCampaign extends Campaign_1.Campaign {
     set cost(value) {
         this._cost = value;
     }
-    CalculatePrice(precio) {
-        throw new Error("Method not implemented.");
+    CalculatePrice() {
+        let listem = this.listemision;
+        let totalprice = 0;
+        let numberofmentionsregister = listem.length;
+        let durationspod = this.duration;
+        let pricepersecond = 0;
+        if (listem.length == 0) {
+            pricepersecond = 0;
+        }
+        for (let emision of listem) {
+            pricepersecond = pricepersecond + emision._programem._pricexseg;
+        }
+        totalprice = (durationspod * pricepersecond * numberofmentionsregister) + this.cost;
+        return totalprice;
     }
 }
 exports.OwnCampaign = OwnCampaign;

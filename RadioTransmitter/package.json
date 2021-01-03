@@ -7,7 +7,7 @@
     "name": ""
   },
   "scripts": {
-    "start": "node ./logic/class/LProgram.js",
+    "start": "node ./logic/class/LCampaign.js",
     "build": "tsc --build",
     "clean": "tsc --build --clean"
   },

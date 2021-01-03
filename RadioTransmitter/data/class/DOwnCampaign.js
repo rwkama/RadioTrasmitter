@@ -66,6 +66,9 @@ class DOwnCampaign {
                 let cn = yield Conection_1.Conexion.uri().connect();
                 const collection = cn.db("RadioTransmitter").collection("OwnCampaign");
                 const p = yield collection.findOne({ _title: title });
+                if (p == null) {
+                    return null;
+                }
                 var obj = new OwnCampaign_1.OwnCampaign(p._title, p._datei, p._datef, p._duration, p._mentions, p._advert, p._cost, p._listemision);
                 return obj;
                 cn.close();
@@ -78,6 +81,7 @@ class DOwnCampaign {
     addOCampaign(dtoc) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
+                dtoc.listemision = [];
                 let cn = yield Conection_1.Conexion.uri().connect();
                 const coladvert = cn.db("RadioTransmitter").collection("OwnCampaign");
                 const result = yield coladvert.insertOne(dtoc);

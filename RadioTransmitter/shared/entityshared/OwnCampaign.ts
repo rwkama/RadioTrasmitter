@@ -20,7 +20,20 @@ export class OwnCampaign extends Campaign
         super(ctitle, cdatei, cdatef, cduration, cmentions, cadver, ownlistem);
         this.cost = owncost;
     }
-    public CalculatePrice(precio: number) {
-        throw new Error("Method not implemented.");
+    public CalculatePrice() {
+        let listem = this.listemision;
+        let totalprice = 0;
+        let numberofmentionsregister = listem.length;
+        let durationspod = this.duration;
+        let pricepersecond = 0;
+        if (listem.length == 0) {
+            pricepersecond = 0;
+        }
+        for (let emision of listem) {
+            pricepersecond = pricepersecond + emision._programem._pricexseg;
+        }
+        totalprice = (durationspod * pricepersecond * numberofmentionsregister)+this.cost;
+        return totalprice;
+
     }
 }

@@ -66,6 +66,9 @@ class DProgram {
                 let cn = yield Conection_1.Conexion.uri().connect();
                 const collection = cn.db("RadioTransmitter").collection("Program");
                 const p = yield collection.findOne({ _name: name });
+                if (p == null) {
+                    return null;
+                }
                 var obj = new Program_1.Program(p._name, p._producer, p._type, p._pricexseg);
                 return obj;
                 cn.close();

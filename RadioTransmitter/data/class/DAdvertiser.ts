@@ -62,14 +62,14 @@ export class DAdvertiser implements IDAdvertiser {
 }
     public async getAdvertiser(rut:number): Promise<Advertiser> {
 
-
+        let obj = null;
         try {
             let cn = await Conexion.uri().connect();
             const collection = cn.db("RadioTransmitter").collection("Advertiser");
             const p = await collection.findOne({RutAn:rut});
 
-            
-            var obj = new Advertiser(p.RutAn, p.NomAn, p.DirAn, p.TelAn)
+            if (p == null) { return null; }
+             obj = new Advertiser(p.RutAn, p.NomAn, p.DirAn, p.TelAn)
             return obj;
             cn.close();
 

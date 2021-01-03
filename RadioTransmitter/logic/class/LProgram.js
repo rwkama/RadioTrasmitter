@@ -38,7 +38,7 @@ class LProgram {
         if (validateprogram.type.trim() === "") {
             throw new logicexception_1.LogicException("The type cannot be empty");
         }
-        if (validateprogram.pricexseg < 0) {
+        if (validateprogram.pricexseg < 1) {
             throw new logicexception_1.LogicException("The price per second must be greater than 0");
         }
     }
@@ -111,9 +111,9 @@ let datatypeProgram = new Program_1.Program("NewProgram", "NewProducer", "Journa
 //LProgram.getInstance().getPrograms().then(data => {
 //        console.log(data)
 //    });
-LProgram.getInstance().updateProgram(datatypeProgram);
-console.log("Program updated");
-LProgram.getInstance().getPrograms().then(data => {
-    console.log(data);
-});
+//LProgram.getInstance().updateProgram(datatypeProgram);
+//console.log("Program updated");
+//LProgram.getInstance().getPrograms().then(data => {
+//        console.log(data)
+//    });
 //# sourceMappingURL=LProgram.js.map

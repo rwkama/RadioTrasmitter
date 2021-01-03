@@ -53,6 +53,16 @@ class Campaign {
     set mentions(value) {
         this._mentions = value;
     }
+    countdateofequalemission(newdateemission) {
+        let varlistemision = this.listemision;
+        let numbermentions = 0;
+        for (var em of varlistemision) {
+            if (em._dateem.getDate() === newdateemission.getDate()) {
+                numbermentions++;
+            }
+        }
+        return numbermentions;
+    }
 }
 exports.Campaign = Campaign;
 //# sourceMappingURL=Campaign.js.map

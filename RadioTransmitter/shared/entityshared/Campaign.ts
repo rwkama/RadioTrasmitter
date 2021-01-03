@@ -66,6 +66,19 @@ export abstract class Campaign
         this.advert = cadver;
         this.listemision = clistem;
     }
-    public abstract CalculatePrice(precio:number);
+    public countdateofequalemission(newdateemission: Date): number
+    {
+        let varlistemision = this.listemision;
+        let numbermentions = 0;
+        for (var em of varlistemision)
+        {
+            if (em._dateem.getDate() === newdateemission.getDate())
+            {
+                numbermentions++;
+            }
+        }
+        return numbermentions;
+    }
+    public abstract CalculatePrice();
     
 }

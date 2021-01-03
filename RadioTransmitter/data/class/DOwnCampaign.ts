@@ -70,6 +70,7 @@ export class DOwnCampaign implements IDOwnCampaign {
             let cn = await Conexion.uri().connect();
             const collection = cn.db("RadioTransmitter").collection("OwnCampaign");
             const p = await collection.findOne({ _title: title });
+            if (p == null) { return null; }
             var obj = new OwnCampaign(p._title, p._datei, p._datef, p._duration, p._mentions, p._advert, p._cost, p._listemision);
             return obj;
             cn.close();
@@ -82,7 +83,7 @@ export class DOwnCampaign implements IDOwnCampaign {
     }
     public async addOCampaign(dtoc: OwnCampaign) {
         try {
-
+            dtoc.listemision = [];
             let cn = await Conexion.uri().connect();
             const coladvert = cn.db("RadioTransmitter").collection("OwnCampaign");
             const result = await coladvert.insertOne(dtoc);

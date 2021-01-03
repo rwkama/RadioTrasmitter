@@ -64,17 +64,20 @@ export class DExternalCampaign implements IDExternalCampaign {
 
     }
     public async getECampaign(title: string): Promise<ECampaign> {
-
-
+       
+        let obj = null;
+      
         try {
             let cn = await Conexion.uri().connect();
-            const collection = cn.db("RadioTransmitter").collection("ExternalCampaign");
-            const p = await collection.findOne({_title:title });
-            var obj = new ECampaign(p._title, p._datei, p._datef, p._duration, p._mentions, p._advert, p._producer, p._listemision);   
+            let collection = cn.db("RadioTransmitter").collection("ExternalCampaign");
+            let p = await collection.findOne({ _title: title });
+            if (p == null) { return null;}
+            obj = new ECampaign(p._title, p._datei, p._datef, p._duration, p._mentions, p._advert, p._producer, p._listemision);   
             return obj;
             cn.close();
 
         }
+
         catch (e) {
             throw new DataException("External Campaign could not be searched (It is possible that the ECampaign is not in the system)" + e.message);
         }
@@ -82,7 +85,7 @@ export class DExternalCampaign implements IDExternalCampaign {
     }
     public async addECampaign(dtec: ECampaign) {
         try {
-
+            dtec.listemision = [];
             let cn = await Conexion.uri().connect();
             const coladvert = cn.db("RadioTransmitter").collection("ExternalCampaign");
             const result = await coladvert.insertOne(dtec);
@@ -168,6 +171,7 @@ export class DExternalCampaign implements IDExternalCampaign {
 //let dtprog = new Program("Top 10", "PabloJackie", "Musical", 150);
 //var dtadv = new Advertiser(555, "sfasfasfsafas", "qweqwrqtqt", "0867686776");
 //var em = new Emission(dtprog, dateem);
+let  dateem = new Date("December 27, 2020");
 //var unalista=[];
 ////unalista.push(em);
 ////unalista.push(em);

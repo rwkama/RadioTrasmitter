@@ -22,7 +22,7 @@ export class Program {
          this._type = value; 
        
     }
-    private _pricexseg: number;
+    public _pricexseg: number;
     public get pricexseg(): number {
         return this._pricexseg;
     }
